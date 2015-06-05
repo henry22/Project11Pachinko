@@ -19,6 +19,8 @@ class GameScene: SKScene {
         background.zPosition = -1
         //To add any node to the current screen
         addChild(background)
+        //Adds a physics body to the whole scene that is a line on each edge
+        physicsBody = SKPhysicsBody(edgeLoopFromRect: frame)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -27,6 +29,8 @@ class GameScene: SKScene {
             //Find out where the screen was touched in relation to the game scene
             let location = touch.locationInNode(self)
             let box = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 64, height: 64))
+            //Adds a physics body to the box that is a rectangle of the same size as the box
+            box.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 64, height: 64))
             box.position = location
             addChild(box)
         }
