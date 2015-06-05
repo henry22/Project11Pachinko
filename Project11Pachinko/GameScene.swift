@@ -10,32 +10,25 @@ import SpriteKit
 
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
+        //SKSpriteNode can load any picture from the app bundle just like UIImage
+        let background = SKSpriteNode(imageNamed: "background.jpg")
+        background.position = CGPoint(x: 512, y: 384)
+        //Blend modes determine how a node is drawn, and the .Replace option means "just draw it, ignoring any alpha values"
+        background.blendMode = .Replace
+        //In the game means "draw this behind everything else."
+        background.zPosition = -1
+        //To add any node to the current screen
+        addChild(background)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        /* Called when a touch begins */
-        
-        for touch in (touches as! Set<UITouch>) {
+        //UITouch provides information about a touch such as its position and when it happened
+        if let touch = touches.first as? UITouch {
+            //Find out where the screen was touched in relation to the game scene
             let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
+            let box = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 64, height: 64))
+            box.position = location
+            addChild(box)
         }
     }
    
