@@ -22,8 +22,16 @@ class GameScene: SKScene {
         //Adds a physics body to the whole scene that is a line on each edge
         physicsBody = SKPhysicsBody(edgeLoopFromRect: frame)
         
+        makeBouncerAt(CGPoint(x: 0, y: 0))
+        makeBouncerAt(CGPoint(x: 256, y: 0))
+        makeBouncerAt(CGPoint(x: 512, y: 0))
+        makeBouncerAt(CGPoint(x: 768, y: 0))
+        makeBouncerAt(CGPoint(x: 1024, y: 0))
+    }
+    
+    func makeBouncerAt(position: CGPoint) {
         let bouncer = SKSpriteNode(imageNamed: "bouncer")
-        bouncer.position = CGPoint(x: 512, y: 0)
+        bouncer.position = position
         bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
         //The object will still collide with other things, but it won't ever be moved as a result
         bouncer.physicsBody!.dynamic = false
