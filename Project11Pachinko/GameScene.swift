@@ -28,11 +28,13 @@ class GameScene: SKScene {
         if let touch = touches.first as? UITouch {
             //Find out where the screen was touched in relation to the game scene
             let location = touch.locationInNode(self)
-            let box = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 64, height: 64))
-            //Adds a physics body to the box that is a rectangle of the same size as the box
-            box.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 64, height: 64))
-            box.position = location
-            addChild(box)
+            let ball = SKSpriteNode(imageNamed: "ballRed")
+            //Add circular physics to the ball
+            ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+            //Giving the ball's physics body a bounciness level of 0.4
+            ball.physicsBody!.restitution = 0.4
+            ball.position = location
+            addChild(ball)
         }
     }
    
