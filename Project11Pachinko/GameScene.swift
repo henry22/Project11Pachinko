@@ -58,6 +58,9 @@ class GameScene: SKScene {
         slotBase.position = position
         slotGlow.position = position
         
+        slotBase.physicsBody = SKPhysicsBody(rectangleOfSize: slotBase.size)
+        slotBase.physicsBody!.dynamic = false
+        
         addChild(slotBase)
         addChild(slotGlow)
         
