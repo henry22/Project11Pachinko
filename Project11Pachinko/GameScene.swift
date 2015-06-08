@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         //SKSpriteNode can load any picture from the app bundle just like UIImage
         let background = SKSpriteNode(imageNamed: "background.jpg")
@@ -21,6 +21,9 @@ class GameScene: SKScene {
         addChild(background)
         //Adds a physics body to the whole scene that is a line on each edge
         physicsBody = SKPhysicsBody(edgeLoopFromRect: frame)
+        
+        //Assign the current scene to be the physics world's contact delegate
+        physicsWorld.contactDelegate = self
         
         makeSlotAt(CGPoint(x: 128, y: 0), isGood: true)
         makeSlotAt(CGPoint(x: 384, y: 0), isGood: false)
@@ -38,6 +41,9 @@ class GameScene: SKScene {
         let bouncer = SKSpriteNode(imageNamed: "bouncer")
         bouncer.position = position
         bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
+        
+        bouncer.physicsBody!.contactTestBitMask = bouncer.physicsBody!.collisionBitMask
+        
         //The object will still collide with other things, but it won't ever be moved as a result
         bouncer.physicsBody!.dynamic = false
         addChild(bouncer)
@@ -50,11 +56,11 @@ class GameScene: SKScene {
         if isGood {
             slotBase = SKSpriteNode(imageNamed: "slotBaseGood")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowGood")
-            slotBase.name = "Good"
+            slotBase.name = "good"
         } else {
             slotBase = SKSpriteNode(imageNamed: "slotBaseBad")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowBad")
-            slotBase.name = "Bad"
+            slotBase.name = "bad"
         }
         
         slotBase.position = position
@@ -83,6 +89,9 @@ class GameScene: SKScene {
             
             //Add circular physics to the ball
             ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+            //We're saying, "tell me about every collision"
+            ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
+            
             //Giving the ball's physics body a bounciness level of 0.4
             ball.physicsBody!.restitution = 0.4
             ball.position = location
