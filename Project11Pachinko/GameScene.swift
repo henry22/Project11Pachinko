@@ -99,6 +99,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func didBeginContact(contact: SKPhysicsContact) {
+        if contact.bodyA.node!.name == "ball" {
+            collisionBetweenBalls(contact.bodyA.node!, object: contact.bodyB.node!)
+        } else if contact.bodyB.node!.name == "ball" {
+            collisionBetweenBalls(contact.bodyB.node!, object: contact.bodyA.node!)
+        }
+    }
+    
     func collisionBetweenBalls(ball: SKNode, object: SKNode) {
         if object.name == "good" {
             destroyBall(ball)
