@@ -50,9 +50,11 @@ class GameScene: SKScene {
         if isGood {
             slotBase = SKSpriteNode(imageNamed: "slotBaseGood")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowGood")
+            slotBase.name = "Good"
         } else {
             slotBase = SKSpriteNode(imageNamed: "slotBaseBad")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowBad")
+            slotBase.name = "Bad"
         }
         
         slotBase.position = position
@@ -76,6 +78,9 @@ class GameScene: SKScene {
             //Find out where the screen was touched in relation to the game scene
             let location = touch.locationInNode(self)
             let ball = SKSpriteNode(imageNamed: "ballRed")
+            
+            ball.name = "ball"
+            
             //Add circular physics to the ball
             ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
             //Giving the ball's physics body a bounciness level of 0.4
