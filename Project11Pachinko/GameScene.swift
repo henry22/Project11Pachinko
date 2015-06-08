@@ -60,6 +60,11 @@ class GameScene: SKScene {
         
         addChild(slotBase)
         addChild(slotGlow)
+        
+        //Rotate the node by 90 degrees over 10 seconds, repeating forever
+        let spin = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 10)
+        let spinForever = SKAction.repeatActionForever(spin)
+        slotGlow.runAction(spinForever)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
