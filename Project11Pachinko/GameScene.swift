@@ -19,6 +19,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    var editLabel: SKLabelNode!
+    
+    var editingMode: Bool = false {
+        didSet {
+            if editingMode {
+                editLabel.text = "Done"
+            } else {
+                editLabel.text = "Edit"
+            }
+        }
+    }
+    
     override func didMoveToView(view: SKView) {
         //SKSpriteNode can load any picture from the app bundle just like UIImage
         let background = SKSpriteNode(imageNamed: "background.jpg")
