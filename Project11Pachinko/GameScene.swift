@@ -123,19 +123,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //Set editingMode to be the opposite of whatever it is right now
                 editingMode = !editingMode
             } else {
-                let ball = SKSpriteNode(imageNamed: "ballRed")
-                
-                ball.name = "ball"
-                
-                //Add circular physics to the ball
-                ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
-                //We're saying, "tell me about every collision"
-                ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
-                
-                //Giving the ball's physics body a bounciness level of 0.4
-                ball.physicsBody!.restitution = 0.4
-                ball.position = location
-                addChild(ball)
+                if editingMode {
+                    // create a box
+                } else {
+                    let ball = SKSpriteNode(imageNamed: "ballRed")
+                    
+                    ball.name = "ball"
+                    
+                    //Add circular physics to the ball
+                    ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+                    //We're saying, "tell me about every collision"
+                    ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
+                    
+                    //Giving the ball's physics body a bounciness level of 0.4
+                    ball.physicsBody!.restitution = 0.4
+                    ball.position = location
+                    addChild(ball)
+                }
             }
         }
     }

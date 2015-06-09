@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0F17AD1B26C39C00D51955 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0F17AC1B26C39C00D51955 /* Helper.swift */; };
 		BA43E7691B1F2889006A0A83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43E7681B1F2889006A0A83 /* AppDelegate.swift */; };
 		BA43E76B1B1F2889006A0A83 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BA43E76A1B1F2889006A0A83 /* GameScene.sks */; };
 		BA43E76D1B1F2889006A0A83 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43E76C1B1F2889006A0A83 /* GameScene.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA0F17AC1B26C39C00D51955 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		BA43E7631B1F2889006A0A83 /* Project11Pachinko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project11Pachinko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA43E7671B1F2889006A0A83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA43E7681B1F2889006A0A83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				BA43E76C1B1F2889006A0A83 /* GameScene.swift */,
 				BA43E76E1B1F2889006A0A83 /* GameViewController.swift */,
 				BA43E7701B1F2889006A0A83 /* Main.storyboard */,
+				BA0F17AC1B26C39C00D51955 /* Helper.swift */,
 				BA43E7661B1F2889006A0A83 /* Supporting Files */,
 			);
 			path = Project11Pachinko;
@@ -342,6 +345,7 @@
 				BA43E76D1B1F2889006A0A83 /* GameScene.swift in Sources */,
 				BA43E76F1B1F2889006A0A83 /* GameViewController.swift in Sources */,
 				BA43E7691B1F2889006A0A83 /* AppDelegate.swift in Sources */,
+				BA0F17AD1B26C39C00D51955 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +543,7 @@
 				BA43E7881B1F2889006A0A83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA43E7891B1F2889006A0A83 /* Build configuration list for PBXNativeTarget "Project11PachinkoTests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +552,7 @@
 				BA43E78B1B1F2889006A0A83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
