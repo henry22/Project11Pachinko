@@ -124,7 +124,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 editingMode = !editingMode
             } else {
                 if editingMode {
-                    // create a box
+                    //Create a box
+                    let size = CGSize(width: RandomInt(min: 16, max: 128), height: 16)
+                    //Create with the random size we made along with a random color
+                    let box = SKSpriteNode(color: RandomColor(), size: size)
+                    //It rotates a node on the screen as if it had been skewered straight through the screen
+                    box.zRotation = RandomCGFloat(min: 0, max: 3)
+                    box.position = location
+                    
+                    box.physicsBody = SKPhysicsBody(rectangleOfSize: box.size)
+                    box.physicsBody!.dynamic = false
+                    
+                    addChild(box)
                 } else {
                     let ball = SKSpriteNode(imageNamed: "ballRed")
                     
