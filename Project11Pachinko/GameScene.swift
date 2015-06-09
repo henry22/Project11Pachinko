@@ -116,19 +116,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let touch = touches.first as? UITouch {
             //Find out where the screen was touched in relation to the game scene
             let location = touch.locationInNode(self)
-            let ball = SKSpriteNode(imageNamed: "ballRed")
             
-            ball.name = "ball"
+            let objects = nodesAtPoint(location) as! [SKNode]
             
-            //Add circular physics to the ball
-            ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
-            //We're saying, "tell me about every collision"
-            ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
-            
-            //Giving the ball's physics body a bounciness level of 0.4
-            ball.physicsBody!.restitution = 0.4
-            ball.position = location
-            addChild(ball)
+            if contains(objects, editLabel) {
+                //Set editingMode to be the opposite of whatever it is right now
+                editingMode = !editingMode
+            } else {
+                let ball = SKSpriteNode(imageNamed: "ballRed")
+                
+                ball.name = "ball"
+                
+                //Add circular physics to the ball
+                ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+                //We're saying, "tell me about every collision"
+                ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
+                
+                //Giving the ball's physics body a bounciness level of 0.4
+                ball.physicsBody!.restitution = 0.4
+                ball.position = location
+                addChild(ball)
+            }
         }
     }
     
