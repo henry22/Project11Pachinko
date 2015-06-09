@@ -9,6 +9,16 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var scoreLabel: SKLabelNode!
+    
+    var score: Int = 0 {
+        //Use the property observers to make the label update itself when the score value changes
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
+    
     override func didMoveToView(view: SKView) {
         //SKSpriteNode can load any picture from the app bundle just like UIImage
         let background = SKSpriteNode(imageNamed: "background.jpg")
