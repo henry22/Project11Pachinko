@@ -45,6 +45,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         makeBouncerAt(CGPoint(x: 512, y: 0))
         makeBouncerAt(CGPoint(x: 768, y: 0))
         makeBouncerAt(CGPoint(x: 1024, y: 0))
+        
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "Score: 0"
+        scoreLabel.horizontalAlignmentMode = .Right
+        scoreLabel.position = CGPoint(x: 980, y: 700)
+        addChild(scoreLabel)
     }
     
     func makeBouncerAt(position: CGPoint) {
