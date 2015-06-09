@@ -174,6 +174,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func destroyBall(ball: SKNode) {
+        //Finds the full path to a file called FireParticles.sks inside our app bundle
+        if let myParticlePath = NSBundle.mainBundle().pathForResource("FireParticles", ofType: "sks") {
+            //NSKeyedUnarchiver is used to load to load saved data from disk into an object
+            //SKEmitterNode is a special node type that emits particles
+            let fireParticles = NSKeyedUnarchiver.unarchiveObjectWithFile(myParticlePath) as! SKEmitterNode
+            fireParticles.position = ball.position
+            addChild(fireParticles)
+        }
+        
         //It removes the node from the game
         ball.removeFromParent()
     }
